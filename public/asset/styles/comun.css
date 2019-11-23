@@ -1,0 +1,383 @@
+
+
+p
+{
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 300;
+	color: black;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+/*********************************
+9. Footer
+*********************************/
+
+.footer
+{
+	display: block;
+	width: 100%;
+	background: #f8f8f8;
+}
+.footer_content
+{
+	padding-bottom: 37px;
+}
+.footer_about
+{
+	padding-top: 47px;
+}
+.footer_logo
+{
+	margin-left: -71px;
+}
+.footer_logo a
+{
+	display: block;
+}
+.footer_logo a > div > div:last-child
+{
+	font-size: 34.46px;
+	font-weight: 700;
+	color: #4a4a4a;
+	padding-left: 22px;
+	-webkit-transform: translateY(3px);
+	-moz-transform: translateY(3px);
+	-ms-transform: translateY(3px);
+	-o-transform: translateY(3px);
+	transform: translateY(3px);
+}
+.footer_about_text
+{
+	margin-top: 24px;
+	padding-right: 50px;
+}
+.footer_menu
+{
+	padding-top: 64px;
+}
+.footer_title
+{
+	font-size: 35px;
+	font-weight: 700;
+	color: #4a4a4a;
+	line-height: 0.75;
+}
+.footer_list
+{
+	display: block;
+	width: 100%;
+	margin-top: 29px;
+}
+.footer_list li
+{
+	width: 100%;
+	position: relative;
+	height: 60px;
+}
+.footer_list li:not(:last-of-type)
+{
+	border-bottom: solid 2px #eeeeee;
+}
+.footer_list li a
+{
+	display: block;
+	position: relative;
+	font-size: 18px;
+	color: #4a4a4a;
+	line-height: 58px;
+}
+.footer_list li a:hover
+{
+	color: #2fce98;
+}
+.footer_list li a > div::after
+{
+	display: block;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	left: 0;
+	font-family: 'FontAwesome';
+	content: '\f054';
+	font-size: 11px;
+	color: #969696;
+}
+.footer_list li a:hover > div::after
+{
+	color: #2fce98;
+}
+.footer_list li a > div
+{
+	display: inline-block;
+	padding-left: 22px;
+}
+.footer_list li a > div > div
+{
+	display: block;
+	position: absolute;
+	top: 0;
+	white-space: nowrap;
+	font-size: 10px;
+	color: #FFFFFF;
+	line-height: 0.75;
+	text-transform: uppercase;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-radius: 6px;
+	margin-top: 10px;
+}
+.footer_tag_1
+{
+	left: calc(100% + 5px);
+	background: #2fce98;
+}
+.footer_tag_2
+{
+	left: calc(100% + 25px);
+	background: #beaf4a;
+}
+.footer_contact
+{
+	padding-top: 64px;
+}
+.newsletter
+{
+	margin-top: 48px;
+}
+.newseletter_form
+{
+	width: 100%;
+}
+.newsletter_input
+{
+	width: 100%;
+	height: 53px;
+	background: #FFFFFF;
+	padding-left: 28px;
+	border: none;
+	outline: none;
+	color: #4a4a4a;
+	border-radius: 27px;
+}
+.newsletter_input::-webkit-input-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	color: #4a4a4a !important;
+}
+.newsletter_input:-moz-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	color: #4a4a4a !important;
+}
+.newsletter_input::-moz-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	color: #4a4a4a !important;
+} 
+.newsletter_input:-ms-input-placeholder
+{ 
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	color: #4a4a4a !important;
+}
+.newsletter_input::input-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	color: #4a4a4a !important;
+}
+.newsletter_button
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 53px;
+	height: 53px;
+	border-radius: 50%;
+	background: #2fce98;
+	border: none;
+	outline: none;
+	font-size: 24px;
+	font-weight: 500;
+	color: #FFFFFF;
+	line-height: 53px;
+	text-align: center;
+	cursor: pointer;
+}
+.footer_social
+{
+	margin-top: 42px;
+}
+.footer_social_list
+{
+	margin-top: 41px;
+}
+.footer_social_list li
+{
+	width: 53px;
+	height: 53px;
+	border-radius: 50%;
+	border: solid 2px #6d6d6d;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-ms-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+}
+.footer_social_list li:not(:last-of-type)
+{
+	margin-right: 17px;
+}
+.footer_social_list li a
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-ms-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+}
+.footer_social_list li a i
+{
+	line-height: 49px;
+	color: #6d6d6d;
+	font-size: 24px;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-ms-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+}
+.footer_social_list li:hover
+{
+	border-color: #2fce98;
+	transform: translateY(-5px);
+}
+.footer_social_list li a:hover i
+{
+	color: #2fce98;
+}
+.footer_bar
+{
+	width: 100%;
+	border-top: solid 2px #d5d5d5;
+}
+.footer_bar_content
+{
+	height: 74px;
+}
+.footer_nav ul li:not(:last-of-type)
+{
+	margin-right: 37px;
+}
+.footer_nav ul li a
+{
+	font-size: 16px;
+	font-weight: 400;
+	color: #4a4a4a;
+}
+.footer_nav ul li a:hover
+{
+	color: #2fce98;
+}
+.copyright
+{
+	font-size: 16px;
+	color: #969696;
+	font-weight: 300;
+}
+
+.price-oldslider {
+	color: white;
+	font-size: 21px;
+}
+
+.price-old {
+	margin-right: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #999;
+}
+
+
+
+
+/*custom*/
+.product_namesinwidth {
+    max-width: none;
+}
+
+
+/*agregado para la parte roja de descuento */
+
+.badge-offer {
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 25px;
+    z-index: 2;
+}
+
+.badge-offer b {
+    background: #ef5f5f;
+    padding: 4px;
+    font-family: 'Bebas';
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    height: 36px;
+    width: 50px;
+    position: relative;
+}
+
+.badge-offer b:after {
+    border-top: 7px solid #ef5f5f;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 36px;
+    width: 0;
+}
+
+/* de nuevo */
+.badge-new {
+    top: 7px;
+    left: 7px;
+    position: absolute;
+    display: block;
+    z-index: 10;
+    padding: 2px 7px;
+    font-size: 12px;
+    background-color: #ef5f5f;
+    color: #fff;
+    border-radius: 4px;
+	
+    color: #fff;
+    background-color: #17a2b8;
+}
+
+
+

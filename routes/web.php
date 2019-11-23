@@ -33,10 +33,12 @@ return $prod;
     //return view('welcome');
 
 
-$cat = Category::find(1)->products;
+/*$cat = Category::find(1)->products;
 
 return $cat;
+*/
 
+return view('tienda.index');
 });
 
 Auth::routes();
