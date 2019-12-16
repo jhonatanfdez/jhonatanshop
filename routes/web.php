@@ -44,10 +44,15 @@ return view('tienda.index');
 
 
 
-Route::get('/admin', function () {
-    return view('admin.category.create');
-});
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/admin', function () {
+    return view('plantilla.admin');
+});
+
+Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');

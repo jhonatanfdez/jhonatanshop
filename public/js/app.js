@@ -49382,20 +49382,27 @@ var apicategory = new Vue({
     getCategory: function getCategory() {
       var _this = this;
 
-      var url = '/api/category/' + this.slug;
-      axios.get(url).then(function (response) {
-        _this.div_mensajeslug = response.data;
+      if (this.slug) {
+        var url = '/api/category/' + this.slug;
+        axios.get(url).then(function (response) {
+          _this.div_mensajeslug = response.data;
 
-        if (_this.div_mensajeslug === "Slug Disponible") {
-          _this.div_clase_slug = 'badge badge-success';
-          _this.deshabilitar_boton = 0;
-        } else {
-          _this.div_clase_slug = 'badge badge-danger';
-          _this.deshabilitar_boton = 1;
-        }
+          if (_this.div_mensajeslug === "Slug Disponible") {
+            _this.div_clase_slug = 'badge badge-success';
+            _this.deshabilitar_boton = 0;
+          } else {
+            _this.div_clase_slug = 'badge badge-danger';
+            _this.deshabilitar_boton = 1;
+          }
 
-        _this.div_aparecer = true;
-      });
+          _this.div_aparecer = true;
+        });
+      } else {
+        this.div_clase_slug = 'badge badge-danger';
+        this.div_mensajeslug = "Debes escribir una categoria";
+        this.deshabilitar_boton = 1;
+        this.div_aparecer = true;
+      }
     }
   }
 });

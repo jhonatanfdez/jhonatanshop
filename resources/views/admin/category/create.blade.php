@@ -9,6 +9,8 @@
 
 
 <div id="apicategory">
+    <form action="{{ route('admin.category.store') }}" method="POST">
+      @csrf
 
       <!-- Default box -->
       <div class="card">
@@ -24,7 +26,7 @@
         </div>
         <div class="card-body">
               
-                <form action="">
+                
                     
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -53,11 +55,13 @@
                     :disabled = "deshabilitar_boton==1"
                   type="submit" value="Guardar" class="btn btn-primary float-right">
           
-                  </form>
+                
         </div>
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
-
+    </form>
 </div>
+
+
  @endsection     
