@@ -49346,12 +49346,12 @@ module.exports = function(module) {
 var apicategory = new Vue({
   el: '#apicategory',
   data: {
-    nombre: 'Jhonatan Fernández',
+    nombre: '',
     slug: '',
     div_mensajeslug: 'Slug Existe',
     div_clase_slug: 'badge badge-danger',
     div_aparecer: false,
-    deshabilitar_boton: 0
+    deshabilitar_boton: 1
   },
   computed: {
     generarSLug: function generarSLug() {
@@ -49403,6 +49403,12 @@ var apicategory = new Vue({
         this.deshabilitar_boton = 1;
         this.div_aparecer = true;
       }
+    }
+  },
+  mounted: function mounted() {
+    if (document.getElementById('editar').innerHTML) {
+      this.nombre = document.getElementById('nombretemp').innerHTML;
+      this.deshabilitar_boton = 0;
     }
   }
 });
