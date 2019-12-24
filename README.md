@@ -44,6 +44,8 @@ DB_PASSWORD=123456
 
 6) ejecuta php artisan migrate
 
-7) ejecuta php artisan serve y prueba el proyecto que debe funcionar.
+7) ejecuta npm run install && npm run dev
+
+8) ejecuta php artisan serve y prueba el proyecto que debe funcionar.
 
 Un saludo y Dios les bendiga a todos. 
