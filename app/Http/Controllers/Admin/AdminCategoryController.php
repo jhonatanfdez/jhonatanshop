@@ -46,7 +46,13 @@ class AdminCategoryController extends Controller
         return $cat;
         */
 
-        return Category::create($request->all());
+        //return Category::create($request->all());
+
+        Category::create($request->all());
+
+        return redirect()->route('admin.category.index')->with('datos','Registro creado correctamente!');
+
+
     }
 
     /**
@@ -93,7 +99,9 @@ class AdminCategoryController extends Controller
         */
         $cat->fill($request->all())->save();
 
-        return $cat; 
+        //return $cat;
+        
+        return redirect()->route('admin.category.index')->with('datos','Registro actualizado correctamente!');
     }
 
     /**
