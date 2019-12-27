@@ -61,9 +61,12 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $cat= Category::where('slug',$slug)->firstOrFail();
+        $editar = 'Si';
+        
+        return view('admin.category.show',compact('cat','editar'));
     }
 
     /**
