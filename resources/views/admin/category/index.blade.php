@@ -8,7 +8,10 @@
 
 
 
-<div class="row">
+<div id="confirmareliminar" class="row">
+
+  <span style="display:none;" id="urlbase">{{route('admin.category.index')}}</span>
+  @include('custom.modal_eliminar')
     <div class="col-12">
       <div class="card">
         <div class="card-header">
@@ -60,7 +63,9 @@
                         </td>
 
                         <td> <a class="btn btn-danger" 
-                            href="{{ route('admin.category.index') }}">Eliminar</a>
+                            href="{{ route('admin.category.index') }}" 
+                            v-on:click.prevent="deseas_eliminar({{$categoria->id}})"
+                            >Eliminar</a>
                         </td>
                         
                     </tr>
