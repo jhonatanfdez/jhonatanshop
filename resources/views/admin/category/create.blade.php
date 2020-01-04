@@ -3,6 +3,11 @@
 
 @section('titulo', 'Crear Categoría')
 
+@section('breadcrumb')
+  <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categorías</a></li>
+  <li class="breadcrumb-item active">@yield('titulo')</li>
+@endsection
+
 
 @section('contenido')
 
