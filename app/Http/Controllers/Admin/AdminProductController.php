@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class AdminProductController extends Controller
 {
@@ -28,7 +29,8 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Category::orderBy('nombre')->get();
+        return view('admin.product.create',compact('categorias'));
     }
 
     /**
