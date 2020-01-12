@@ -42,11 +42,16 @@
                         
                         class="form-control" type="text" name="nombre" id="nombre">
                         <label for="slug">Slug</label>
-                        <input readonly v-model="generarSLug"  class="form-control" type="text" name="slug" id="slug">
+                        <input 
+                        readonly 
+                        v-model="generarSLug"  
+                        class="form-control" type="text" name="slug" id="slug">
+                       
                         <div v-if="div_aparecer" v-bind:class="div_clase_slug">
                            @{{ div_mensajeslug }}
                         </div>
                         <br v-if="div_aparecer">
+                        
                         <label for="descripcion">Descripción</label>
                         <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="5"></textarea>
                         

@@ -11,6 +11,11 @@
 
 @section('contenido')
 
+<div id="apiproduct">
+
+
+
+
 <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data" >
 @csrf
 
@@ -98,11 +103,25 @@
                 <div class="form-group">
 
                   <label>Nombre</label>
-                  <input class="form-control" type="text" id="nombre" name="nombre">
+                  <input 
+
+                   v-model="nombre"     
+                   @blur="getProduct" 
+                   @focus = "div_aparecer= false"
+                  
+                  class="form-control" type="text" id="nombre" name="nombre">
 
                   <label>Slug</label>
-                  <input class="form-control" type="text" id="slug" name="slug" >
+                  <input 
+                  readonly 
+                  v-model="generarSLug"  
+                  
+                  class="form-control" type="text" id="slug" name="slug" >
 
+                  <div v-if="div_aparecer" v-bind:class="div_clase_slug">
+                    @{{ div_mensajeslug }}
+                 </div>
+                 <br v-if="div_aparecer">
                  
                 </div>
                 <!-- /.form-group -->
@@ -402,7 +421,9 @@
                 <div class="form-group">
 
                    <a class="btn btn-danger" href="{{ route('cancelar','admin.product.index') }}">Cancelar</a>
-                   <input                  
+                   <input    
+                   :disabled = "deshabilitar_boton==1"
+                                 
                   type="submit" value="Guardar" class="btn btn-primary">
                  
                 </div>
@@ -437,21 +458,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -459,5 +465,6 @@
 
 
     </form>
+  </div>
 
  @endsection
