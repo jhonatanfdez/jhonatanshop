@@ -1,17 +1,30 @@
 <?php
 use App\Product;
 use App\Category;
+use App\Image;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+//para hacer las pruebas con las imagenes.
+Route::get('/prueba', function () {
+
+    //20 eliminar todas las imagenes
+
+    $product = App\Product::find(2);
+    $product->images()->delete();
+    return $product;
+    
+
+});
+    
+//mostrar resultados
+Route::get('/resultados', function () {
+
+   $image = App\Image::orderBy('id','Desc')->get();
+   return  $image; 
+});
+
+
+
 
 Route::get('/', function () {
 
