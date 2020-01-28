@@ -41,6 +41,40 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'nombre' => 'required|unique:products,nombre',
+            'slug' => 'required|unique:products,slug',
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+        
+        $urlimagenes = [];
+
+        if ($request->hasFile('imagenes')) {
+
+            $imagenes = $request->file('imagenes');
+
+            //dd ($imagenes);
+
+            foreach ($imagenes as $imagen) {
+
+                $nombre = time().'_'.$imagen->getClientOriginalName();
+
+                $ruta = public_path().'/imagenes';
+                
+                $imagen->move($ruta , $nombre);
+
+                $urlimagenes[]['url'] = '/imagenes/'.$nombre;
+
+
+            }
+
+            //return $urlimagenes;
+
+        }
+
+
         
         $prod = new Product;
 
@@ -77,9 +111,18 @@ class AdminProductController extends Controller
     
         $prod->save();
 
-        return $prod;
+
+        $prod->images()->createMany($urlimagenes);
+
+        //return $prod->images;
+
+        return redirect()->route('admin.product.index')->with('datos','Registro creado correctamente!');
+
+        
  
         //return $request->all();
+
+        
     }
 
     /**

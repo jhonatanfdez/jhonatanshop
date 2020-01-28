@@ -9,9 +9,9 @@ Route::get('/prueba', function () {
 
     //20 eliminar todas las imagenes
 
-    $product = App\Product::find(2);
-    $product->images()->delete();
-    return $product;
+    $product = App\Product::find(5);
+   
+    return $product->images;
     
 
 });
