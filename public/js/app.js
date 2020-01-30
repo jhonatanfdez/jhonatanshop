@@ -49430,7 +49430,13 @@ var apiproduct = new Vue({
     div_mensajeslug: 'Slug Existe',
     div_clase_slug: 'badge badge-danger',
     div_aparecer: false,
-    deshabilitar_boton: 1
+    deshabilitar_boton: 1,
+    //variables de precios
+    precioanterior: 0,
+    precioactual: 0,
+    descuento: 0,
+    porcentajededescuento: 0,
+    descuento_mensaje: '0'
   },
   computed: {
     generarSLug: function generarSLug() {
@@ -49455,6 +49461,47 @@ var apiproduct = new Vue({
         return _char[e];
       }).toLowerCase();
       return this.slug; //return this.nombre.trim().replace(/ /g,'-').toLowerCase()
+    },
+    generardescuento: function generardescuento() {
+      if (this.porcentajededescuento > 100) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No puedes poner un valor mayor a 100'
+        });
+        this.porcentajededescuento = 100;
+        this.descuento = this.precioanterior * this.porcentajededescuento / 100;
+        this.precioactual = this.precioanterior - this.descuento;
+        this.descuento_mensaje = 'Este producto tiene el 100% de descuento, por ende es gratis.';
+        return this.descuento_mensaje;
+      } else if (this.porcentajededescuento < 0) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No puedes poner un valor menor a 0'
+        });
+        this.porcentajededescuento = 0;
+        this.descuento = this.precioanterior * this.porcentajededescuento / 100;
+        this.precioactual = this.precioanterior - this.descuento;
+        this.descuento_mensaje = '';
+        return this.descuento_mensaje;
+      } else if (this.porcentajededescuento > 0) {
+        this.descuento = this.precioanterior * this.porcentajededescuento / 100;
+        this.precioactual = this.precioanterior - this.descuento;
+
+        if (this.porcentajededescuento == 100) {
+          this.descuento_mensaje = 'Este producto tiene el 100% de descuento, por ende es gratis.';
+        } else {
+          this.descuento_mensaje = 'Hay un descuento de $US' + this.descuento;
+        }
+
+        return this.descuento_mensaje;
+      } else {
+        this.descuento = '';
+        this.precioactual = this.precioanterior;
+        this.descuento_mensaje = '';
+        return this.descuento_mensaje;
+      }
     }
   },
   methods: {

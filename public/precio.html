@@ -12,6 +12,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </head>
 <body>
@@ -160,6 +161,41 @@ var app = new Vue({
     }, 
     computed: {
         generardescuento : function(){
+
+          if (this.porcentajededescuento >100) {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'No puedes poner un valor mayor a 100'
+              
+            });              
+              this.porcentajededescuento =100;
+              
+              this.descuento = (this.precioanterior* this.porcentajededescuento) /100;
+              this.precioactual = this.precioanterior - this.descuento;
+              this.descuento_mensaje = 'Este producto tiene el 100% de descuento, por ende es gratis.';
+              return this.descuento_mensaje;
+
+          } else 
+          if (this.porcentajededescuento <0) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'No puedes poner un valor menor a 0'
+              
+            });
+
+              this.porcentajededescuento =0;
+              
+              this.descuento = (this.precioanterior* this.porcentajededescuento) /100;
+              this.precioactual = this.precioanterior - this.descuento;
+              this.descuento_mensaje = '';
+              return this.descuento_mensaje;
+
+          } else 
+
+
             if (this.porcentajededescuento >0) {
                 
                 this.descuento = (this.precioanterior* this.porcentajededescuento) /100;
