@@ -9,7 +9,21 @@
 
 
 @section('contenido')
+<style type="text/css">
+  .table1 {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    text-align: center;
+  }
 
+  .table1 td, .table1 th {
+    padding: .75rem;
+    vertical-align: center;
+    border-top: 1px solid #dee2e6;
+  }
+
+</style>  
 
 
 <div id="confirmareliminar" class="row">
@@ -39,31 +53,40 @@
           </div>
         </div>
         <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" style="height: 300px;">
+        <div class="card-body table-responsive p-0" >
                 <a class=" m-2 float-right btn btn-primary"  href="{{ route('admin.product.create') }}">Crear</a>
-          <table class="table table-head-fixed">
+          <table class="table1 table-head-fixed">
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Imagen</th>
                 <th>Nombre</th>
-                <th>Slug</th>
-                <th>Descripción</th>
-                <th>Fecha creación</th>
-                <th>Fecha modificación</th>
+                <th>Estado</th>
+                <th>Activo</th>
+                <th>Slider Principal</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
             <tbody>
 
                 @foreach ($productos as $producto)
-               
                     <tr>
                         <td> {{$producto->id }} </td>
+                        <td>  
+                           @if ($producto->images->count()<=0 )
+                              <img style="height: 70px;" src="/imagenes/avatar.png" class="round-circle">
+                           @else
+                              <img style="height: 70px;" src="{{ $producto->images->random()->url }}" class="round-circle">   
+                           @endif
+
+                          
+
+
+                        </td>
                         <td> {{$producto->nombre }} </td>
-                        <td> {{$producto->slug }} </td>
-                        <td> {{$producto->descripcion }} </td>
-                        <td> {{$producto->created_at }} </td>
-                        <td> {{$producto->updated_at }} </td>
+                        <td> {{$producto->estado }} </td>
+                        <td> {{$producto->activo }} </td>
+                        <td> {{$producto->sliderprincipal }} </td>
 
                         <td> <a class="btn btn-default"  
                             href="{{ route('admin.product.show',$producto->slug) }}">Ver</a>
