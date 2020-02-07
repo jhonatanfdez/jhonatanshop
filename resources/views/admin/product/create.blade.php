@@ -9,8 +9,39 @@
 @endsection
 
 
+@section('estilos')
+  <!-- Select2 -->
+ <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+ <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+@endsection
+
+@section('scripts')
+  
+ <!-- Select2 -->
+<script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+
+<script src="/adminlte/ckeditor/ckeditor.js"></script>
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('#category_id').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    });
+  });
+
+</script> 
+
+@endsection
+
+
 @section('contenido')
 
+ 
 <div id="apiproduct">
 
 
@@ -135,7 +166,7 @@
 
 
                   <label>Categoria</label>
-                  <select name="category_id" class="form-control select2" style="width: 100%;">
+                  <select name="category_id" id="category_id" class="form-control " style="width: 100%;">
                     @foreach($categorias as $categoria)
                     
                      @if ($loop->first)
@@ -291,7 +322,7 @@
                 <div class="form-group">
                   <label>Descripción corta:</label>
 
-                  <textarea class="form-control" name="descripcion_corta" id="descripcion_corta" rows="3"></textarea>
+                  <textarea class="form-control ckeditor" name="descripcion_corta" id="descripcion_corta" rows="3"></textarea>
                 
                 </div>
                 <!-- /.form group -->
@@ -299,7 +330,7 @@
                <div class="form-group">
                   <label>Descripción larga:</label>
 
-                  <textarea class="form-control" name="descripcion_larga" id="descripcion_larga" rows="5"></textarea>
+                  <textarea class="form-control ckeditor" name="descripcion_larga" id="descripcion_larga" rows="5"></textarea>
                 
                 </div>                
 
@@ -325,7 +356,7 @@
                 <div class="form-group">
                   <label>Especificaciones:</label>
 
-                  <textarea class="form-control" name="especificaciones" id="especificaciones" rows="3"></textarea>
+                  <textarea class="form-control ckeditor" name="especificaciones" id="especificaciones" rows="3"></textarea>
                 
                 </div>
                 <!-- /.form group -->
@@ -333,7 +364,7 @@
                <div class="form-group">
                   <label>Datos de interes:</label>
 
-                  <textarea class="form-control" name="datos_de_interes" id="datos_de_interes" rows="5"></textarea>
+                  <textarea class="form-control ckeditor" name="datos_de_interes" id="datos_de_interes" rows="5"></textarea>
                 
                 </div>                
 

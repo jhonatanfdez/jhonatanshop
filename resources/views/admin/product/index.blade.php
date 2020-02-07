@@ -74,9 +74,9 @@
                         <td> {{$producto->id }} </td>
                         <td>  
                            @if ($producto->images->count()<=0 )
-                              <img style="height: 70px;" src="/imagenes/avatar.png" class="round-circle">
+                              <img style="height: 100px;    width: 100px;" src="/imagenes/avatar.png" class="rounded-circle">
                            @else
-                              <img style="height: 70px;" src="{{ $producto->images->random()->url }}" class="round-circle">   
+                              <img style="height: 100px;    width: 100px;" src="{{ $producto->images->random()->url }}" class="rounded-circle">   
                            @endif
 
                           
