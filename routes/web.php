@@ -9,9 +9,9 @@ Route::get('/prueba', function () {
 
     //20 eliminar todas las imagenes
 
-    $product = App\Product::find(5);
+    $product = App\Product::with('images','category')->orderby('id','desc')->get();
    
-    return $product->images;
+    return $product;
     
 
 });
