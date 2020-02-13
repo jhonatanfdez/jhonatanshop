@@ -24,6 +24,22 @@
 <script src="/adminlte/ckeditor/ckeditor.js"></script>
 
 <script>
+
+  window.data = {
+    
+    editar:'Si',
+    
+    datos: {
+      "nombre":"{{$producto->nombre}}",
+      "precioanterior": "{{$producto->precio_anterior}}",
+      "porcentajededescuento":"{{$producto->porcentaje_descuento}}"
+    }
+  }
+
+
+
+
+
   $(function () {
     //Initialize Select2 Elements
     $('#category_id').select2()
