@@ -14671,6 +14671,31 @@ var apiproduct = new Vue({
     }
   },
   methods: {
+    eliminarimagen: function eliminarimagen(imagen) {
+      //console.log(imagen);
+      Swal.fire({
+        title: '¿Estas seguro de eliminar la imagen ' + imagen.id + '?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Si, Eliminar!',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.value) {
+          var url = '/api/eliminarimagen/' + imagen.id;
+          axios["delete"](url).then(function (response) {
+            console.log(response.data);
+          }); //eliminar el elemento
+
+          var elemento = document.getElementById('idimagen-' + imagen.id); //console.log(elemento);
+
+          elemento.parentNode.removeChild(elemento);
+          Swal.fire('¡Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+        }
+      });
+    },
     getProduct: function getProduct() {
       var _this = this;
 

@@ -498,17 +498,20 @@
             <div class="row">
 
               @foreach ($producto->images as $image)
-              <div class="col-sm-2">
+              <div id="idimagen-{{$image->id}}" class="col-sm-2">
                 <a href="{{ $image->url }}" data-toggle="lightbox" data-title="Id:{{ $image->id }}"  data-gallery="gallery">
-                  <img src="{{ $image->url }}" class="img-fluid mb-2" />
+                  <img style="width:150px; height:150px;" src="{{ $image->url }}" class="img-fluid mb-2" />
                 </a>
                 <br>
-                <a href="{{ $image->url }}">
-                  <i class="fas fa-trash-alt" style="color:red"></i>
+                <a href="{{ $image->url }}"
+                    v-on:click.prevent="eliminarimagen({{$image}})"
+                  
+                  >
+                  <i class="fas fa-trash-alt" style="color:red"></i> Id:{{ $image->id }}
                 </a>
               </div>
               
-              {{ $image->id }}
+              
               @endforeach
              
 
