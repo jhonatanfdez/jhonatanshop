@@ -160,7 +160,87 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+            'nombre' => 'required|unique:products,nombre,'.$id,
+            'slug' => 'required|unique:products,slug,'.$id,
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+        
+        $urlimagenes = [];
+
+        if ($request->hasFile('imagenes')) {
+
+            $imagenes = $request->file('imagenes');
+
+            //dd ($imagenes);
+
+            foreach ($imagenes as $imagen) {
+
+                $nombre = time().'_'.$imagen->getClientOriginalName();
+
+                $ruta = public_path().'/imagenes';
+                
+                $imagen->move($ruta , $nombre);
+
+                $urlimagenes[]['url'] = '/imagenes/'.$nombre;
+
+
+            }
+
+            //return $urlimagenes;
+
+        }
+
+
+        
+        $prod = Product::findOrFail($id);
+
+        $prod->nombre=                  $request->nombre;
+        $prod->slug=                    $request->slug;
+        $prod->category_id=             $request->category_id;
+        $prod->cantidad=                $request->cantidad;
+        $prod->precio_anterior=         $request->precioanterior;
+        $prod->precio_actual=           $request->precioactual;
+        $prod->porcentaje_descuento=    $request->porcentajededescuento;
+        $prod->descripcion_corta=       $request->descripcion_corta;
+        $prod->descripcion_larga=       $request->descripcion_larga;
+        $prod->especificaciones=        $request->especificaciones;
+        $prod->datos_de_interes=        $request->datos_de_interes;
+        $prod->estado=                  $request->estado;
+
+
+        if ($request->activo) {
+            $prod->activo= 'Si';    
+        }
+        else {
+            $prod->activo= 'No';    
+        }
+
+
+
+        if ($request->sliderprincipal) {
+            $prod->sliderprincipal= 'Si';    
+        }
+        else {
+            $prod->sliderprincipal= 'No';    
+        }
+
+    
+        $prod->save();
+
+
+        $prod->images()->createMany($urlimagenes);
+
+        //return $prod->images;
+
+        return redirect()->route('admin.product.edit',$prod->slug)->with('datos','Registro actualizado correctamente!');
+
+        
+ 
+        //return $request->all();
+
     }
 
     /**
