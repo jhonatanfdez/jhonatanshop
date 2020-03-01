@@ -29,8 +29,9 @@ class AdminProductController extends Controller
      */
     public function create()
     {
+        $estados_productos = $this->estados_productos();
         $categorias = Category::orderBy('nombre')->get();
-        return view('admin.product.create',compact('categorias'));
+        return view('admin.product.create',compact('categorias','estados_productos'));
     }
 
     /**
@@ -147,8 +148,12 @@ class AdminProductController extends Controller
         $producto = Product::with('images','category')->where('slug',$slug)->firstOrFail();
 
         $categorias = Category::orderBy('nombre')->get();
+
+        $estados_productos = $this->estados_productos();
+
+        //dd($estados_productos);
         
-        return view('admin.product.edit',compact('producto','categorias'));
+        return view('admin.product.edit',compact('producto','categorias','estados_productos'));
     }
 
     /**
@@ -253,4 +258,21 @@ class AdminProductController extends Controller
     {
         //
     }
+
+
+    public function estados_productos(){
+
+
+        return [
+            '',
+            'Nuevo',
+            'En Oferta',
+            'Popular'
+        ];
+    }
+
+
+
+
+
 }

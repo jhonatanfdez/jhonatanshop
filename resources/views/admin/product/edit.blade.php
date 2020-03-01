@@ -547,8 +547,24 @@
               <div class="col-md-6">
                 <div class="form-group">
 
+
+                  
                   <label>Estado</label>
-                  <input  class="form-control" type="text" id="estado" name="estado" value="{{ $producto->estado }}" >
+                  <select name="estado" id="estado" class="form-control " style="width: 100%;">
+                    @foreach($estados_productos as $estado)
+                    
+                     @if ($estado == $producto->estado)
+                        <option value="{{ $estado }}" selected="selected">{{ $estado }}</option>
+                     @else
+                        <option value="{{ $estado }}">{{ $estado }}</option>
+                     @endif
+                    @endforeach
+                  </select>
+
+
+
+
+
 
                  
                 </div>
