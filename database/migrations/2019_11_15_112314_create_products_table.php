@@ -14,10 +14,10 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('nombre')->unique();
             $table->string('slug')->unique();
-            $table->unsignedbigInteger('category_id');
+            //$table->unsignedbigInteger('category_id');
             $table->bigInteger('cantidad')->unsigned()->default(0);
             $table->decimal('precio_actual',12,2)->default(0);
             $table->decimal('precio_anterior',12,2)->default(0);
@@ -33,7 +33,7 @@ class CreateProductsTable extends Migration
             $table->char('sliderprincipal',2);
             $table->timestamps();
 
-            $table->foreign('category_id')
+            $table->foreignId('category_id')
                   ->references('id')
                   ->on('categories');
         });
