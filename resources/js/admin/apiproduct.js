@@ -162,6 +162,16 @@ const apiproduct = new Vue({
                     }
                     this.div_aparecer = true;
 
+                    if (data.datos.nombre) {
+                        if (data.datos.nombre===this.nombre) {
+                            this.deshabilitar_boton=0;
+                            this.div_mensajeslug='';
+                            this.div_clase_slug='';
+                            this.div_aparecer = false;
+
+                        }
+                    }
+
                 })
 
             }else{
