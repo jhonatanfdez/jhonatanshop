@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use Illuminate\Support\Facades\File;
 
 class AdminProductController extends Controller
 {
+
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -264,7 +270,21 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prod= Product::with('images')->findOrFail($id);
+
+        foreach($prod->images as $image) {
+            
+            $archivo = substr($image->url,1);
+
+             File::delete($archivo);
+    
+            $image->delete();
+        }
+
+        //return $prod;
+        $prod->delete();
+        return redirect()->route('admin.product.index')->with('datos','Registro eliminado correctamente!');
+
     }
 
 

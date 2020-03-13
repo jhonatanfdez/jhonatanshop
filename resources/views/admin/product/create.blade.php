@@ -179,7 +179,7 @@
 
                   </select>
                   <label>Cantidad</label>
-                  <input class="form-control" type="number" id="cantidad" name="cantidad" >
+                  <input class="form-control" type="number" id="cantidad" name="cantidad" value="0">
                 </div>
                 <!-- /.form-group -->
     
