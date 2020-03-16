@@ -25,3 +25,5 @@ Route::apiResource('product','API\ProductController')->names('api.product');
 
 
 Route::delete('/eliminarimagen/{id}','API\ProductController@eliminarimagen')->name('api.eliminarimagen');
+
+Route::get('/autocomplete', 'API\AutocompleteController@autocomplete')->name('autocomplete');

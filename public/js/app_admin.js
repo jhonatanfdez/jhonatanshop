@@ -14502,6 +14502,44 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./resources/js/admin/api_search_autocomplete.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/admin/api_search_autocomplete.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var api_search_autocomplete = new Vue({
+  el: '#api_search_autocomplete',
+  data: {
+    palabraabuscar: '',
+    resultados: []
+  },
+  methods: {
+    autoComplete: function autoComplete() {
+      var _this = this;
+
+      this.resultados = [];
+
+      if (this.palabraabuscar.length > 2) {
+        axios.get('/api/autocomplete', {
+          params: {
+            palabraabuscar: this.palabraabuscar
+          }
+        }).then(function (response) {
+          _this.resultados = response.data;
+          console.log(response.data);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    console.log('datos cargados');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/apicategory.js":
 /*!*******************************************!*\
   !*** ./resources/js/admin/apicategory.js ***!
@@ -14863,6 +14901,10 @@ if (document.getElementById('apiproduct')) {
 
 if (document.getElementById('confirmareliminar')) {
   __webpack_require__(/*! ./confirmareliminar */ "./resources/js/confirmareliminar.js");
+}
+
+if (document.getElementById('api_search_autocomplete')) {
+  __webpack_require__(/*! ./admin/api_search_autocomplete */ "./resources/js/admin/api_search_autocomplete.js");
 }
 
 /***/ }),
