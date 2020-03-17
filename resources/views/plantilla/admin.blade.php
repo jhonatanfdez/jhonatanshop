@@ -22,6 +22,7 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
+  <div id="api_search_autocomplete">
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -36,10 +37,18 @@
       </li>
     </ul>
 
+    
+    
+    
+  
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search"
+        name="nombre"
+        v-model="palabra_a_buscar"
+        v-on:keyup="autoComplete"
+        >
         <div class="input-group-append">
           <button class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
@@ -47,6 +56,9 @@
         </div>
       </div>
     </form>
+
+    
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -143,6 +155,27 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  <div class="panel-footer" v-if="resultados.length">
+    <ul class="list-group" style="align-items:center; justify-content:center;">
+
+      <li class="list-group-item" v-for="resultado in resultados">
+        <a href="#" class="dropdown-item" 
+          v-on:click.prevent="palabra_a_buscar =resultado.nombre ">
+          <span v-html="resultado.name_negrita"></span>
+        </a>
+
+      </li>
+
+
+    </ul>
+
+
+  </div>
+
+
+
+</div>
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
