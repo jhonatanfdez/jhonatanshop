@@ -20,23 +20,22 @@ const api_search_autocomplete = new Vue({
                     console.log(response.data);
                });
             }
+
             
 
-                  
-       
-                    
 
 
-      
 
+
+
+            
 
         },
         
     },
     mounted(){
-       
-
-        console.log('Datos cargados correctamente');
+        console.log('Datos cargados correctamente');        
+        
     }
 
 });
