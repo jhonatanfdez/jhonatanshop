@@ -2,12 +2,12 @@
 
 Bienvenidos al proyecto "jhonatanshop". 
 
-Este es un proyecto de una tienda online hecho en Laravel 6.
+Este es un proyecto de una tienda online hecho que iniciamos en laravel 6 y luego actualizamos a laravel 7. 
 
 Para poder utilizar este proyecto, debes tener los siguientes requisitos:
 
-1) debes tener la versión de PHP mayor o igual a la 7.2.0. 
-para mas información visita la documentación oficial de Laravel: https://laravel.com/docs/6.x
+1) debes tener la versión de PHP mayor o igual a la 7.2.5. 
+para mas información visita la documentación oficial de Laravel: https://laravel.com/docs/7.x
 
 2) debes tener instalado composer en tu equipo: https://getcomposer.org/
 
@@ -44,7 +44,7 @@ DB_PASSWORD=123456
 
 6) ejecuta php artisan migrate
 
-7) ejecuta npm run install && npm run dev
+7) ejecuta npm install && npm run dev
 
 8) ejecuta php artisan serve y prueba el proyecto que debe funcionar.
 
