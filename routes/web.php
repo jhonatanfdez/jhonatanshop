@@ -1,17 +1,23 @@
 <?php
+
+use Illuminate\Support\Facades\Gate;
+
 use App\Product;
 use App\Category;
 use App\Image;
+use App\User;
 
 
-//para hacer las pruebas con las imagenes.
+
 Route::get('/prueba', function () {
 
-    //20 eliminar todas las imagenes
+    Gate::authorize('haveaccess','role.show');
+    $user = User::find(1);
 
-    $product = App\Product::with('images','category')->orderby('id','desc')->get();
-   
-    return $product;
+
+
+    return $user;
+    
     
 
 });
@@ -64,6 +70,10 @@ return view('tienda.index');
 
 
 
+Route::resource('/role', 'RoleController')->names('role');
+
+Route::resource('/user', 'UserController', ['except'=>[
+    'create','store']])->names('user');
 
 
 Auth::routes();
