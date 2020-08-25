@@ -21,6 +21,8 @@ class AdminCategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('haveaccess','category.index');
+
         $nombre = $request->get('nombre');
        
         $categorias = Category::where('nombre','like',"%$nombre%")->orderBy('nombre')->paginate(2);
@@ -34,6 +36,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('haveaccess','category.create');
         return view('admin.category.create');
     }
 
@@ -56,7 +59,7 @@ class AdminCategoryController extends Controller
 
         //return Category::create($request->all());
 
-
+        $this->authorize('haveaccess','category.create');
         $request->validate([
             'nombre' => 'required|max:50|unique:categories,nombre',
             'slug' => 'required|max:50|unique:categories,slug',
@@ -78,6 +81,7 @@ class AdminCategoryController extends Controller
      */
     public function show($slug)
     {
+        $this->authorize('haveaccess','category.show');
         $cat= Category::where('slug',$slug)->firstOrFail();
         $editar = 'Si';
         
@@ -92,6 +96,7 @@ class AdminCategoryController extends Controller
      */
     public function edit($slug)
     {
+        $this->authorize('haveaccess','category.edit');
         $cat= Category::where('slug',$slug)->firstOrFail();
         $editar = 'Si';
         
@@ -107,6 +112,7 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('haveaccess','category.edit');
         $cat= Category::findOrFail($id);
 
         $request->validate([
@@ -138,6 +144,7 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('haveaccess','category.destroy');
         $cat= Category::findOrFail($id);
         $cat->delete();
         return redirect()->route('admin.category.index')->with('datos','Registro eliminado correctamente!');

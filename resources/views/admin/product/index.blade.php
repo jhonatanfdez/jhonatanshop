@@ -54,7 +54,10 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0" >
+          @can('haveaccess','product.create')    
                 <a class=" m-2 float-right btn btn-primary"  href="{{ route('admin.product.create') }}">Crear</a>
+          @endcan
+
           <table class="table1 table-head-fixed">
             <thead>
               <tr>
@@ -88,19 +91,23 @@
                         <td> {{$producto->activo }} </td>
                         <td> {{$producto->sliderprincipal }} </td>
 
+                        @can('haveaccess','product.show') 
                         <td> <a class="btn btn-default"  
                             href="{{ route('admin.product.show',$producto->slug) }}">Ver</a>
                         </td>
-
+                        @endcan
+                        @can('haveaccess','product.edit') 
                         <td> <a class="btn btn-info" 
                             href="{{ route('admin.product.edit',$producto->slug) }}">Editar</a>
                         </td>
-
+                        @endcan
+                        @can('haveaccess','product.destroy') 
                         <td> <a class="btn btn-danger" 
                             href="{{ route('admin.product.index') }}" 
                             v-on:click.prevent="deseas_eliminar({{$producto->id}})"
                             >Eliminar</a>
                         </td>
+                        @endcan
                         
                     </tr>
                 @endforeach

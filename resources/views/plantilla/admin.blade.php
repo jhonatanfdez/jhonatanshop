@@ -241,7 +241,7 @@
             </ul>
           </li>
 
-
+          @can('haveaccess','category.index')
            <!-- Categorías -->
                <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -258,19 +258,21 @@
                       <p>Listado de Categorías</p>
                     </a>
                   </li>
+                  @can('haveaccess','category.create')
                   <li class="nav-item">
                     <a href="{{ route('admin.category.create')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Crear categoría</p>
                     </a>
                   </li>
+                  @endcan
                  
                 </ul>
               </li>
+              @endcan
 
 
-
-
+@can('haveaccess','product.index')
  <!-- Productos -->
  <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
@@ -287,18 +289,75 @@
         <p>Listado de Productos</p>
       </a>
     </li>
+    @can('haveaccess','product.create')
     <li class="nav-item">
       <a href="{{ route('admin.product.create')}}" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
         <p>Crear Productos</p>
       </a>
     </li>
+    @endcan
    
   </ul>
 </li>
+@endcan
 
 
 
+<!-- Roles -->
+@can('haveaccess','role.index')
+<li class="nav-item has-treeview">
+  <a href="#" class="nav-link">
+    <i class="fas fa-user-lock"></i>
+    <p>
+      Roles
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{ route('role.index')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Listado de Roles</p>
+      </a>
+    </li>
+    @can('haveaccess','role.create')
+    <li class="nav-item">
+      <a href="{{ route('role.create')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Crear Rol</p>
+      </a>
+    </li>
+    @endcan
+
+   
+  </ul>
+</li>
+@endcan
+
+
+@can('haveaccess','user.index')
+<!-- Usuarios -->
+<li class="nav-item has-treeview">
+  <a href="#" class="nav-link">
+    <i class="fas fa-users"></i>
+    <p>
+      Usuarios
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{ route('user.index')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Listado de Usuarios</p>
+      </a>
+    </li>
+
+   
+  </ul>
+</li>
+@endcan
 
 
 

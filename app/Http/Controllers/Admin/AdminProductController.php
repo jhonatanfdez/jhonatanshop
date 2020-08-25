@@ -22,6 +22,9 @@ class AdminProductController extends Controller
      */
     public function index(Request $request)
     {
+
+        $this->authorize('haveaccess','product.index');
+
         $nombre = $request->get('nombre');
        
         $productos = Product::with('images','category')->where('nombre','like',"%$nombre%")->orderBy('nombre')->paginate(2);
@@ -35,6 +38,8 @@ class AdminProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('haveaccess','product.create');
+
         $estados_productos = $this->estados_productos();
         $categorias = Category::orderBy('nombre')->get();
         return view('admin.product.create',compact('categorias','estados_productos'));
@@ -48,6 +53,7 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('haveaccess','product.create');
 
         $request->validate([
             'nombre' => 'required|unique:products,nombre',
@@ -140,6 +146,8 @@ class AdminProductController extends Controller
      */
     public function show($slug)
     {
+        $this->authorize('haveaccess','product.show');
+
         $producto = Product::with('images','category')->where('slug',$slug)->firstOrFail();
 
         $categorias = Category::orderBy('nombre')->get();
@@ -159,6 +167,8 @@ class AdminProductController extends Controller
      */
     public function edit($slug)
     {
+        $this->authorize('haveaccess','product.edit');
+
         $producto = Product::with('images','category')->where('slug',$slug)->firstOrFail();
 
         $categorias = Category::orderBy('nombre')->get();
@@ -179,7 +189,8 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->authorize('haveaccess','product.edit');
+
         $request->validate([
             'nombre' => 'required|unique:products,nombre,'.$id,
             'slug' => 'required|unique:products,slug,'.$id,
@@ -270,6 +281,8 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('haveaccess','product.destroy');
+
         $prod= Product::with('images')->findOrFail($id);
 
         foreach($prod->images as $image) {
