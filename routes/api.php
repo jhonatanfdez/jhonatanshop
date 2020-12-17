@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\AutocompleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::apiResource('category','API\CategoryController')->names('api.category');
-
-
-Route::apiResource('product','API\ProductController')->names('api.product');
+Route::apiResource('category',CategoryController::class)->names('api.category');
 
 
-Route::delete('/eliminarimagen/{id}','API\ProductController@eliminarimagen')->name('api.eliminarimagen');
+Route::apiResource('product', ProductController::class)->names('api.product');
 
-Route::get('/autocomplete', 'API\AutocompleteController@autocomplete')->name('autocomplete');
+
+Route::delete('/eliminarimagen/{id}',[ProductController::class,'eliminarimagen'])->name('api.eliminarimagen');
+
+Route::get('/autocomplete', [AutocompleteController::class,'autocomplete'])->name('autocomplete');

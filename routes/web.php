@@ -1,11 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Gate;
+use App\User;
 
+use App\Image;
 use App\Product;
 use App\Category;
-use App\Image;
-use App\User;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 
 
 
@@ -70,24 +74,25 @@ return view('tienda.index');
 
 
 
-Route::resource('/role', 'RoleController')->names('role');
+Route::resource('/role', RoleController::class)->names('role');
 
-Route::resource('/user', 'UserController', ['except'=>[
+Route::resource('/user', UserController::class, ['except'=>[
     'create','store']])->names('user');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/admin', function () {
     return view('plantilla.admin');
 })->name('admin');
 
-Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin.category');
+Route::resource('admin/category', AdminCategoryController::class)->names('admin.category');
 
-Route::resource('admin/product', 'Admin\AdminProductController')->names('admin.product');
+Route::resource('admin/product', AdminProductController::class)->names('admin.product');
 
 
 Route::get('cancelar/{ruta}', function($ruta) {
